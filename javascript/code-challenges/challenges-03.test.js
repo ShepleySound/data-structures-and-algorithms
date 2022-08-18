@@ -114,8 +114,8 @@ For example, getStatName(snorlaxData.stats, 50) will return ['special-defense', 
 ------------------------------------------------------------------------------------------------ */
 
 const getStatName = (arr, minBaseStat) => {
-  const filteredArr = arr.filter(element => element.baseStat > minBaseStat);
-  return filteredArr.map(element => element.stat.name);
+  return arr.filter(element => element.baseStat > minBaseStat)
+    .map(element => element.stat.name);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -180,8 +180,8 @@ For example: evenOddNumericValues(['Gregor', 2, 4, 1]) returns ['even', 'even', 
 ------------------------------------------------------------------------------------------------ */
 
 const evenOddNumericValues = (arr) => {
-  const filteredArr = arr.filter(element => typeof element === 'number');
-  return filteredArr.map(element => element % 2 ? 'odd' : 'even');
+  return arr.filter(element => typeof element === 'number')
+    .map(element => element % 2 ? 'odd' : 'even');
 };
 
 /* ------------------------------------------------------------------------------------------------
