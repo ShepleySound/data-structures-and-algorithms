@@ -23,3 +23,4 @@ To run your tests
 The following 
 
 - [Array Reverse](javascript/array-reverse)
+- [Array Insert Shift](javascript/array-insert-shift)
