@@ -1,9 +1,10 @@
 'use strict';
 
 class Node {
-  constructor(data, next) {
+  constructor(data, next = null, previous = null) {
     this.data = data;
-    this.next = next ?? null;
+    this.next = next;
+    this.previous = previous;
   }
 }
 
@@ -68,7 +69,7 @@ class DoublyLinkedList {
   }
 
   getPreviousNode(node) {
-    return node.previous ?? null;
+    return node.previous;
   }
 
   toString() {
