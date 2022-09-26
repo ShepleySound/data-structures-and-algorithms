@@ -4,7 +4,7 @@ See [setup instructions](https://codefellows.github.io/setup-guide/code-301/3-co
 
 ## Repository Quick Tour and Usage
 
-### 301 Code Challenges
+### Code Challenges
 
 Under the `javascript` folder, at the top level, is a sub-folder called `code-challenges`
 
@@ -18,10 +18,10 @@ To run your tests
 - run `npm test` to run all of the tests
 - run `npm test ##` to only run tests for challenge ## (i.e. 01)
 
-### 401 Data Structures, Code Challenges
-
-The following 
+### Implemented Data Structures and Algorithms
 
 - [Array Reverse](javascript/array-reverse)
 - [Array Insert Shift](javascript/array-insert-shift)
-- [Array Insert Shift](javascript/binary-search)
+- [Binary Search](javascript/binary-search)
+- [Linked List](javascript/linked-list)
+- [Doubly Linked List](javascript/doubly-linked-list)
