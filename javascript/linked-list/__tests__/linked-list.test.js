@@ -115,3 +115,64 @@ describe('Test insertion methods', () => {
     expect(list.insertAfter(404)).toBeNull();
   });
 });
+
+describe('Find the length of the linked list', () => {
+  const list = new LinkedList();
+  test('Empty list should return 0', () => {
+    expect(list.getLength()).toEqual(0);
+  });
+
+  test('List with 1 element should return 1', () => {
+    list.insertAtFront(1);
+    expect(list.getLength()).toEqual(1);
+  });
+
+  test('List with 5 elements should return 5', () => {
+    list.insertAtFront(2);
+    list.insertAtFront(3);
+    list.insertAtFront(4);
+    list.insertAtFront(5);
+    expect(list.getLength()).toEqual(5);
+  });
+});
+
+describe('Test finding an element k from the end', () => {
+  const list = new LinkedList();
+  test('k should be a positive integer', () => {
+    expect(list.findFromEnd(-1)).toBeNull();
+  });
+
+  test('k should not be larger than (length - 1) of the linked list', () => {
+    expect(list.getLength()).toEqual(0);
+    expect(list.findFromEnd(5)).toBeNull();
+    list.insertAtFront(1);
+    list.insertAtFront(2);
+    list.insertAtFront(3);
+    list.insertAtFront(4);
+    list.insertAtFront(5);
+    expect(list.findFromEnd(5)).toBeNull();
+    expect(list.findFromEnd(8)).toBeNull();
+  });
+ 
+  test('If valid, k should return the data property of a node in the linked list', () => {
+    expect(list.findFromEnd(0)).toEqual(1);
+    expect(list.findFromEnd(1)).toEqual(2);
+    expect(list.findFromEnd(2)).toEqual(3);
+    list.insertAtFront(100);
+    expect(list.findFromEnd(0)).toEqual(1);
+    list.insertAtBack(5001);
+    expect(list.findFromEnd(0)).toEqual(5001);
+  });
+
+  test('Should work on a linked list of size 1', () => {
+    const listTwo = new LinkedList();
+    listTwo.insertAtFront(2005);
+    expect(listTwo.findFromEnd(0)).toEqual(2005);
+  });
+
+  test('Should not work on a linked list of size 0', () => {
+    const listThree = new LinkedList();
+    expect(listThree.findFromEnd(0)).toBeNull;
+  });
+
+});
