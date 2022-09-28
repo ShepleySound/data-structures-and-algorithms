@@ -29,14 +29,12 @@ class LinkedList {
    *  OR null if the data is not found inside of any of the linked list's nodes.
    */
   getNode(data) {
-    if (this.head) {
-      let current = this.head;
-      while (current) {
-        if (current.data === data) {
-          return current;
-        }
-        current = current.next;
+    let current = this.head;
+    while (current) {
+      if (current.data === data) {
+        return current;
       }
+      current = current.next;
     }
     return null;
   }
@@ -47,15 +45,13 @@ class LinkedList {
    * @returns {(Node|null)} The node before the node that matches {@link data}. Returns null if the found node does not have a node preceding it, or if the node is not found at all.
    */
   getNodeBefore(data) {
-    if (this.head) {
-      let current = this.head;
-      while (current) {
-        if (current.next?.data === data) {
-          return current;
-        }
-        current = current.next;
+    let current = this.head;
+    while (current) {
+      if (current.next?.data === data) {
+        return current;
       }
-    } else return null;
+      current = current.next;
+    }
     return null;
   }
 
@@ -82,7 +78,7 @@ class LinkedList {
 
   /**
    * Inserts a new node after the first node that contains the search value.
-   * @param {*} searchValue TThe value to search for within the linked list.
+   * @param {*} searchValue The value to search for within the linked list.
    *  The new node will be placed after this node.
    * @param {*} data Defines the data to be placed within the inserted node.
    * @returns {(Node|null)} the newly created node OR null if the node parameter is falsy.
@@ -151,6 +147,30 @@ class LinkedList {
       string += 'NULL';
       return string;
     } else return 'NULL';
+  }
+
+  getLength() {
+    let length = 0;
+    let current = this.head;
+    while (current) {
+      length++;
+      current = current.next;
+    }
+    return length;
+  }
+
+  findFromEnd(k) {
+    const endIndex = this.getLength() - 1;
+    const kIndex = endIndex - k;
+    if (kIndex < 0 || k < 0) {
+      return null;
+    }
+    let counter = 0;
+    let current = this.head;
+    while (current && counter < kIndex) {
+      counter++;
+      current = current.next;
+    } return current.data;
   }
 }
 
