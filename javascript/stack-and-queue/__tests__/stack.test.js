@@ -1,48 +1,84 @@
 'use strict';
 
-// Require our linked list implementation
 const { Stack } = require('../index');
 
-describe('Linked List', () => {
-  const list = new Stack();
+describe('Stack', () => {
+  const stack = new Stack();
+  const emptyStack = new Stack();
   test('Null when initialized', () => {
-    expect(list.traverseToEnd()).toBeNull();
-    expect(list.getNode()).toBeNull();
-    expect(list.includes(5)).toEqual(false);
-    expect(list.toString()).toEqual('NULL');
+    expect(stack.top).toBeNull();
+    // expect(stack.traverseToEnd()).toBeNull();
+    // expect(stack.getNode()).toBeNull();
+    // expect(stack.includes(5)).toEqual(false);
+    // expect(stack.toString()).toEqual('NULL');
   });
 
-  test('Insert an integer', () => {
-    list.insertAtFront(5);
-    expect(list.traverseToEnd().data).toEqual(5);
-    expect(list.toString()).toEqual('{ 5 } -> NULL');
+  test('Push data to the top of the stack', () => {
+    stack.push(1);
+    expect(stack.top.data).toEqual(1);
+    stack.push(2);
+    expect(stack.top.data).toEqual(2);
+    stack.push(3);
+    expect(stack.top.data).toEqual(3);
+    stack.push(4);
+    expect(stack.top.data).toEqual(4);
+    stack.push(5);
+    expect(stack.top.data).toEqual(5);
   });
 
-  test('includes() returns true if a value exists', () => {
-    expect(list.includes(5)).toEqual(true);
+  test('Top property returns the last inserted node.', () => {
+    expect(stack.top.data).toEqual(5);
   });
 
-  test('includes() returns false if a value does not exist', () => {
-    expect(list.includes(5000)).toEqual(false);
+  test('Pop off the stack', () => {
+    expect(stack.pop()).toEqual(5);
+    expect(stack.top.data).toEqual(4);
+    expect(stack.pop()).toEqual(4);
+    expect(stack.top.data).toEqual(3);
   });
 
-  test('Head property returns the first inserted value.', () => {
-    expect(list.head.data).toEqual(5);
+  test('Error when popping off empty stack', () => {
+    expect(() => {
+      emptyStack.pop();
+    }).toThrow();
   });
 
-  test('Insert 5 integers, each at the front of the linked list.', () => {
-    const newList = new LinkedList();
-    newList.insertAtFront(1);
-    newList.insertAtFront(2);
-    newList.insertAtFront(3);
-    newList.insertAtFront(4);
-    newList.insertAtFront(5);
-    expect(newList.traverseToEnd().data).toEqual(1);
-    expect(newList.toString())
-      .toEqual('{ 5 } -> { 4 } -> { 3 } -> { 2 } -> { 1 } -> NULL');
+  test('Peek at the top of the stack', () => {
+    expect(stack.peek()).toEqual(3);
+    stack.push(4);
+    expect(stack.peek()).toEqual(4);
   });
 
-  test('Insert 5 integers, each at the back of the linked list.', () => {
+  test('Error when peeking at empty stack', () => {
+    expect(() => {
+      emptyStack.peek();
+    }).toThrow();
+  });
+
+  test('Removing all data from the stack should result in an empty stack', () => {
+    // Add 3 things to the stack
+    emptyStack.push(1);
+    emptyStack.push(2);
+    emptyStack.push(3);
+    // Pop all 3 things off the stack
+    emptyStack.pop();
+    emptyStack.pop();
+    emptyStack.pop();
+    // Stack should be empty
+    expect(() => {
+      emptyStack.peek();
+    }).toThrow();
+  });
+
+  test('isEmpty returns false if any data exists in the stack', () => {
+    expect(stack.isEmpty()).toEqual(false);
+  });
+
+  test('isEmpty returns true if no data exists in the stack', () => {
+    expect(emptyStack.isEmpty()).toEqual(true);
+  });
+
+  xtest('Insert 5 integers, each at the back of the linked list.', () => {
     const newList = new LinkedList();
     newList.insertAtBack(1);
     newList.insertAtBack(2);
@@ -56,7 +92,7 @@ describe('Linked List', () => {
 
 });
 
-describe('Test insertion methods', () => {
+xdescribe('Test insertion methods', () => {
   const list = new LinkedList();
   test('Search methods return null on empty linked list', () => {
     expect(list.getNodeBefore(1)).toBeNull();
@@ -116,7 +152,7 @@ describe('Test insertion methods', () => {
   });
 });
 
-describe('Find the length of the linked list', () => {
+xdescribe('Find the length of the linked list', () => {
   const list = new LinkedList();
   test('Empty list should return 0', () => {
     expect(list.getLength()).toEqual(0);
@@ -136,7 +172,7 @@ describe('Find the length of the linked list', () => {
   });
 });
 
-describe('Test finding an element k from the end', () => {
+xdescribe('Test finding an element k from the end', () => {
   const list = new LinkedList();
   test('k should be a positive integer', () => {
     expect(list.findFromEnd(-1)).toBeNull();
