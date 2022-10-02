@@ -45,7 +45,7 @@ describe('Queue', () => {
     }).toThrow();
   });
 
-  xtest('Peek at the front of the queue', () => {
+  test('Peek at the front of the queue', () => {
     expect(queue.peek()).toEqual(3);
     queue.enqueue(4);
     expect(queue.peek()).toEqual(3);

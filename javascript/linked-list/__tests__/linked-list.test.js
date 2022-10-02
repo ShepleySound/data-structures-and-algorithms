@@ -1,10 +1,10 @@
 'use strict';
 
 // Require our linked list implementation
-const { Stack } = require('../index');
+const LinkedList = require('../index');
 
 describe('Linked List', () => {
-  const list = new Stack();
+  const list = new LinkedList();
   test('Null when initialized', () => {
     expect(list.traverseToEnd()).toBeNull();
     expect(list.getNode()).toBeNull();
