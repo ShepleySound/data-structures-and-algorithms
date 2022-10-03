@@ -135,5 +135,54 @@ class Queue {
   }
 }
 
-module.exports = { Stack, Queue };
+class NullableStack extends Stack {
+  peek() {
+    if (this.top) {
+      return this.top.data;
+    } else return null;
+  }
+}
 
+class PseudoQueue {
+  constructor() {
+    this.pushStack = new NullableStack();
+    this.pullStack = new NullableStack();
+  }
+
+  /**
+   * Checks to see if the stack is empty by checking its top property.
+   * @returns {boolean} If the stack is empty, return true. If the stack contains any nodes, return false.
+   */
+
+
+  enqueue(data) {
+    this.pushStack.push(data);
+  }
+
+  dequeue() {
+    if (this.pullStack.peek() === null) {
+      while (this.pushStack.peek() !== null) {
+        const popped = this.pushStack.pop();
+        this.pullStack.push(popped);
+      }
+    }
+    if (this.pullStack.peek() !== null) {
+      return this.pullStack.pop();
+    } else throw new Error('Cannot dequeue from an empty queue.');
+  }
+}
+
+const pseudo = new PseudoQueue();
+
+pseudo.enqueue(1);
+pseudo.enqueue(2);
+pseudo.enqueue(3);
+pseudo.enqueue(4);
+pseudo.enqueue(5);
+console.log(pseudo.dequeue());
+console.log(pseudo.dequeue());
+console.log(pseudo.dequeue());
+console.log(pseudo.dequeue());
+console.log(pseudo.dequeue());
+
+module.exports = { Stack, Queue };
