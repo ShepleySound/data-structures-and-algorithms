@@ -72,6 +72,5 @@ console.log(shelter.dequeue('dog'))
 console.log(shelter.dequeue('dog'))
 console.log(shelter.dequeue('dog'))
 console.log(shelter.dequeue('dog'))
-console.log(shelter)
-
+console.log(shelter.dequeue('cat'))
 
