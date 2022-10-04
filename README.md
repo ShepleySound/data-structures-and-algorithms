@@ -25,3 +25,4 @@ To run your tests
 - [Binary Search](javascript/binary-search)
 - [Linked List](javascript/linked-list)
 - [Doubly Linked List](javascript/doubly-linked-list)
+- [Stacks and Queues](javascript/stack-and-queue)
