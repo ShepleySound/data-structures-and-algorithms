@@ -135,5 +135,94 @@ class Queue {
   }
 }
 
-module.exports = { Stack, Queue };
+/**
+ * A class reprenting a stack which can return a null value from its peek() method.
+ * @extends Stack
+ */
+class NullableStack extends Stack {
+  peek() {
+    if (this.top) {
+      return this.top.data;
+    } else return null;
+  }
+}
 
+/**
+ * Class representing a "pseudo-queue". Implemented using two simultaneous instances of {@link NullableStack}.
+ */
+class PseudoQueue {
+  /**
+   * Create a pseudo-queue. The queue contains two empty instances of {@link NullableStack} when instantiated
+   */
+  constructor() {
+    this.pushStack = new NullableStack();
+    this.pullStack = new NullableStack();
+  }
+
+  /**
+   * create a new {@link Node} at the back of the queue.
+   * @param {*} data - Data for the new {@link Node} to contain.
+   */
+  enqueue(data) {
+    this.pushStack.push(data);
+  }
+
+  /**
+   * Removes the node that exists at the front of the queue.
+   * @returns data from the dequeued {@link Node}.
+   * @throws Will throw an error if the stack is empty.
+   */
+  dequeue() {
+    if (this.pullStack.peek() === null) {
+      while (this.pushStack.peek() !== null) {
+        const popped = this.pushStack.pop();
+        this.pullStack.push(popped);
+      }
+    }
+    if (this.pullStack.peek() !== null) {
+      return this.pullStack.pop();
+    } else throw new Error('Cannot dequeue from an empty queue.');
+  }
+
+  /**
+   * Returns the data from the front node of the queue.
+   * @returns data from the node at the front of the queue.
+   * @throws Will throw an error if the queue is empty.
+   */
+  peek() {
+    if (this.pullStack.peek() === null) {
+      while (this.pushStack.peek() !== null) {
+        const popped = this.pushStack.pop();
+        this.pullStack.push(popped);
+      }
+    }
+    if (this.pullStack.peek() !== null) {
+      return this.pullStack.peek();
+    } else throw new Error('Cannot peek at an empty queue.');
+  }
+
+  /**
+   * Checks to see if the queue is empty by checking its front property.
+   * @returns {boolean} If the queue is empty, return true. If the queue contains any nodes, return false.
+   */
+  isEmpty() {
+    if (this.pullStack.peek() === null && this.pushStack.peek() === null) {
+      return true;
+    } else return false;
+  }
+}
+
+const pseudo = new PseudoQueue();
+
+pseudo.enqueue(1);
+pseudo.enqueue(2);
+pseudo.enqueue(3);
+pseudo.enqueue(4);
+pseudo.enqueue(5);
+console.log(pseudo.dequeue());
+console.log(pseudo.dequeue());
+console.log(pseudo.dequeue());
+console.log(pseudo.dequeue());
+console.log(pseudo.dequeue());
+
+module.exports = { Stack, Queue, PseudoQueue };

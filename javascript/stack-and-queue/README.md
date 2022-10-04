@@ -31,6 +31,12 @@ In terms of efficiency, every operation on these structures happens in O(1) time
 <dt><a href="#Queue">Queue</a></dt>
 <dd><p>Class representing a queue. It is aware of its <code>front</code> and <code>back</code> properties, even when empty.</p>
 </dd>
+<dt><a href="#NullableStack">NullableStack</a> ⇐ <code><a href="#Stack">Stack</a></code></dt>
+<dd><p>A class reprenting a stack which can return a null value from its peek() method.</p>
+</dd>
+<dt><a href="#PseudoQueue">PseudoQueue</a></dt>
+<dd><p>Class representing a &quot;pseudo-queue&quot;. Implemented using two simultaneous instances of <a href="#NullableStack">NullableStack</a>.</p>
+</dd>
 </dl>
 
 <a name="Node"></a>
@@ -167,4 +173,118 @@ Returns the data from the front node of the queue.
 Checks to see if the queue is empty by checking its front property.
 
 **Kind**: instance method of [<code>Queue</code>](#Queue)  
+**Returns**: <code>boolean</code> - If the queue is empty, return true. If the queue contains any nodes, return false.  
+<a name="NullableStack"></a>
+
+## NullableStack ⇐ [<code>Stack</code>](#Stack)
+A class reprenting a stack which can return a null value from its peek() method.
+
+**Kind**: global class  
+**Extends**: [<code>Stack</code>](#Stack)  
+
+* [NullableStack](#NullableStack) ⇐ [<code>Stack</code>](#Stack)
+    * [.push(data)](#Stack+push)
+    * [.pop()](#Stack+pop) ⇒
+    * [.peek()](#Stack+peek) ⇒
+    * [.isEmpty()](#Stack+isEmpty) ⇒ <code>boolean</code>
+
+<a name="Stack+push"></a>
+
+### nullableStack.push(data)
+Push a new [Node](#Node).
+
+**Kind**: instance method of [<code>NullableStack</code>](#NullableStack)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| data | <code>\*</code> | Data for the new [Node](#Node) to contain. |
+
+<a name="Stack+pop"></a>
+
+### nullableStack.pop() ⇒
+Removes the node that exists at the top of the stack.
+
+**Kind**: instance method of [<code>NullableStack</code>](#NullableStack)  
+**Returns**: data from the popped [Node](#Node).  
+**Throws**:
+
+- Will throw an error if the stack is empty.
+
+<a name="Stack+peek"></a>
+
+### nullableStack.peek() ⇒
+Returns the data from the top node of the stack.
+
+**Kind**: instance method of [<code>NullableStack</code>](#NullableStack)  
+**Overrides**: [<code>peek</code>](#Stack+peek)  
+**Returns**: data from the node at the top of the stack.  
+**Throws**:
+
+- Will throw an error if the stack is empty.
+
+<a name="Stack+isEmpty"></a>
+
+### nullableStack.isEmpty() ⇒ <code>boolean</code>
+Checks to see if the stack is empty by checking its top property.
+
+**Kind**: instance method of [<code>NullableStack</code>](#NullableStack)  
+**Returns**: <code>boolean</code> - If the stack is empty, return true. If the stack contains any nodes, return false.  
+<a name="PseudoQueue"></a>
+
+## PseudoQueue
+Class representing a "pseudo-queue". Implemented using two simultaneous instances of [NullableStack](#NullableStack).
+
+**Kind**: global class  
+
+* [PseudoQueue](#PseudoQueue)
+    * [new PseudoQueue()](#new_PseudoQueue_new)
+    * [.enqueue(data)](#PseudoQueue+enqueue)
+    * [.dequeue()](#PseudoQueue+dequeue) ⇒
+    * [.peek()](#PseudoQueue+peek) ⇒
+    * [.isEmpty()](#PseudoQueue+isEmpty) ⇒ <code>boolean</code>
+
+<a name="new_PseudoQueue_new"></a>
+
+### new PseudoQueue()
+Create a pseudo-queue. The queue contains two empty instances of [NullableStack](#NullableStack) when instantiated
+
+<a name="PseudoQueue+enqueue"></a>
+
+### pseudoQueue.enqueue(data)
+create a new [Node](#Node) at the back of the queue.
+
+**Kind**: instance method of [<code>PseudoQueue</code>](#PseudoQueue)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| data | <code>\*</code> | Data for the new [Node](#Node) to contain. |
+
+<a name="PseudoQueue+dequeue"></a>
+
+### pseudoQueue.dequeue() ⇒
+Removes the node that exists at the front of the queue.
+
+**Kind**: instance method of [<code>PseudoQueue</code>](#PseudoQueue)  
+**Returns**: data from the dequeued [Node](#Node).  
+**Throws**:
+
+- Will throw an error if the stack is empty.
+
+<a name="PseudoQueue+peek"></a>
+
+### pseudoQueue.peek() ⇒
+Returns the data from the front node of the queue.
+
+**Kind**: instance method of [<code>PseudoQueue</code>](#PseudoQueue)  
+**Returns**: data from the node at the front of the queue.  
+**Throws**:
+
+- Will throw an error if the queue is empty.
+
+<a name="PseudoQueue+isEmpty"></a>
+
+### pseudoQueue.isEmpty() ⇒ <code>boolean</code>
+Checks to see if the queue is empty by checking its front property.
+
+**Kind**: instance method of [<code>PseudoQueue</code>](#PseudoQueue)  
 **Returns**: <code>boolean</code> - If the queue is empty, return true. If the queue contains any nodes, return false.  
