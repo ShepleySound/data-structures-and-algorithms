@@ -63,9 +63,9 @@ describe('Queue', () => {
     emptyQueue.enqueue(2);
     emptyQueue.enqueue(3);
     // Pop all 3 things off the queue
-    emptyQueue.dequeue();
-    emptyQueue.dequeue();
-    emptyQueue.dequeue();
+    expect(emptyQueue.dequeue()).toEqual(1);
+    expect(emptyQueue.dequeue()).toEqual(2);
+    expect(emptyQueue.dequeue()).toEqual(3);
     // Queue should be empty
     expect(() => {
       emptyQueue.peek();

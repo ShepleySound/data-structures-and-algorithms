@@ -103,13 +103,16 @@ class Queue {
    */
   dequeue() {
     if (this.front) {
+      let data;
       if (this.front === this.back) {
         // Set both front and back to null
-        return this.front = this.back = null;
+        data = this.front.data;
+        this.front = this.back = null;
+        return data;
       }
-      const temp = this.front.data;
+      data = this.front.data;
       this.front = this.front.next;
-      return temp;
+      return data;
     } else throw new Error('Cannot dequeue data from empty queue.');
   }
 
@@ -211,18 +214,5 @@ class PseudoQueue {
     } else return false;
   }
 }
-
-const pseudo = new PseudoQueue();
-
-pseudo.enqueue(1);
-pseudo.enqueue(2);
-pseudo.enqueue(3);
-pseudo.enqueue(4);
-pseudo.enqueue(5);
-console.log(pseudo.dequeue());
-console.log(pseudo.dequeue());
-console.log(pseudo.dequeue());
-console.log(pseudo.dequeue());
-console.log(pseudo.dequeue());
 
 module.exports = { Stack, Queue, PseudoQueue };
