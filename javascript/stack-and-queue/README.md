@@ -291,3 +291,6 @@ Checks to see if the queue is empty by checking its front property.
 
 ## Pseudo-Queue Whiteboard
 ![Pseudo-Queue Whiteboard](pseudoqueue.png)
+
+## Animal Shelter Whiteboard
+![Animal Shelter Whiteboard](animal-shelter.png)

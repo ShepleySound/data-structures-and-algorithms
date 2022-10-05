@@ -1,6 +1,6 @@
 'use strict';
 
-const { Queue } = require ('./index')
+const { Queue } = require ('./index');
 
 /**
  * Class representing a dog
@@ -48,6 +48,11 @@ class AnimalShelter {
     }
   }
 
+  /**
+   * Takes in a preference in the form of the string and dequeues from the corresponding queue.
+   * @param {string} pref 
+   * @returns The Node dequeued from the appropriate queue. Returns null if preference does not match an existing queue.
+   */
   dequeue(pref) {
     if (pref === 'dog') {
       return this.dogQ.dequeue();
@@ -58,19 +63,4 @@ class AnimalShelter {
   }
 }
 
-const shelter = new AnimalShelter();
-
-shelter.enqueue(new Cat('honey', 'orange'));
-shelter.enqueue(new Cat('pippin', 'orange'));
-shelter.enqueue(new Cat('nox', 'black'));
-shelter.enqueue(new Dog('frisco', 'golden retriever'));
-shelter.enqueue(new Dog('doggy', 'labradoodle'));
-shelter.enqueue(new Dog('hello buddy', 'chihuahua'));
-shelter.enqueue(new Dog('dog buddy', 'pupper'));
-
-console.log(shelter.dequeue('dog'))
-console.log(shelter.dequeue('dog'))
-console.log(shelter.dequeue('dog'))
-console.log(shelter.dequeue('dog'))
-console.log(shelter.dequeue('cat'))
-
+module.exports = { AnimalShelter, Dog, Cat };
