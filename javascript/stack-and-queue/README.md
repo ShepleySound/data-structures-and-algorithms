@@ -290,7 +290,10 @@ Checks to see if the queue is empty by checking its front property.
 **Returns**: <code>boolean</code> - If the queue is empty, return true. If the queue contains any nodes, return false.  
 
 ## Pseudo-Queue Whiteboard
-![Pseudo-Queue Whiteboard](pseudoqueue.png)
+![Pseudo-Queue Whiteboard](./whiteboards/pseudoqueue.png)
 
 ## Animal Shelter Whiteboard
-![Animal Shelter Whiteboard](animal-shelter.png)
+![Animal Shelter Whiteboard](./whiteboards/animal-shelter.png)
+
+## Validate Brackets Whiteboard
+![Validate Brackets Whiteboard](./whiteboards/validate-brackets.png)
