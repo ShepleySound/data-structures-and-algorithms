@@ -215,4 +215,4 @@ class PseudoQueue {
   }
 }
 
-module.exports = { Stack, Queue, PseudoQueue };
+module.exports = { Stack, NullableStack, Queue, PseudoQueue };
