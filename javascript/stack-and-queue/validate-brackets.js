@@ -21,8 +21,8 @@ function validateBrackets (string) {
     }
   }
   if (openers.isEmpty()) {
-    return true
-  } else return false
+    return true;
+  } else return false;
 }
 
 module.exports = { validateBrackets };
@@ -32,16 +32,16 @@ bracketDictionary['(']; // RETURNS ')'
 bracketDictionary['{']; // RETURNS '}'
 
 const testString1 = '([djfjheirttwijdf]()[jdjeieurtjekwjql])'
-console.log(validateBrackets(testString1)) // RETURNS TRUE
+console.log(validateBrackets(testString1)); // RETURNS TRUE
 
-const testString2= '[(hello)world]'
-console.log(validateBrackets(testString2)) // RETURNS TRUE
+const testString2= '[(hello)world]';
+console.log(validateBrackets(testString2)); // RETURNS TRUE
 
-const testString3= '[((hello)]'
-console.log(validateBrackets(testString3)) // RETURNS FALSE
+const testString3= '[((hello)]';
+console.log(validateBrackets(testString3)); // RETURNS FALSE
 
-const testString4 = '['
-console.log(validateBrackets(testString4)) // RETURNS FALSE
+const testString4 = '[';
+console.log(validateBrackets(testString4)); // RETURNS FALSE
 
-const testString5 = ']'
-console.log(validateBrackets(testString5)) // RETURNS FALSE
+const testString5 = ']';
+console.log(validateBrackets(testString5)); // RETURNS FALSE
