@@ -34,4 +34,13 @@ describe('Manual insertion test', () => {
     expect(tree.postorderRecursive()).toEqual([1, 3, 2, 5, 7, 6, 4]);
   });
 
+  test('Test findMax algorithm', () => {
+    expect(tree.findMax()).toEqual(7);
+    tree.root.right.left.right = new Node(200);
+    expect(tree.findMax()).toEqual(200);
+    tree.root.right.right.right = new Node(-1000);
+    expect(tree.findMax()).toEqual(200);
+  });
+  
+
 });

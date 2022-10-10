@@ -138,6 +138,22 @@ class BinaryTree {
     return array;
   }
 
+  findMax(){
+    let max = null;
+    let traverse = (node) => {
+      if (node === null) {
+        return;
+      }
+      if (node.value > max){
+        max = node.value;
+      }
+      traverse(node.left);
+      traverse(node.right);
+    };
+    traverse(this.root);
+    return max;
+  }
+
 }
 
 /**
