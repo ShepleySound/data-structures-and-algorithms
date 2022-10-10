@@ -26,3 +26,4 @@ To run your tests
 - [Linked List](javascript/linked-list)
 - [Doubly Linked List](javascript/doubly-linked-list)
 - [Stacks and Queues](javascript/stack-and-queue)
+- [Trees](javascript/trees)
