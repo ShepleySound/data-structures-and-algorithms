@@ -138,6 +138,10 @@ class BinaryTree {
     return array;
   }
 
+  /**
+   * Using preorder traversal, finds the max value in a binary tree.
+   * @returns the maximum value present in the tree, or null if the tree is empty.
+   */
   findMax(){
     let max = null;
     let traverse = (node) => {

@@ -41,6 +41,5 @@ describe('Manual insertion test', () => {
     tree.root.right.right.right = new Node(-1000);
     expect(tree.findMax()).toEqual(200);
   });
-  
 
 });
