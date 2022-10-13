@@ -1,19 +1,3 @@
-# Tree Implementations
-<!-- Description of the challenge -->
-In JavaScript, implement a Node class, a Binary Tree class, and a Binary Search Tree class.
-
-## Approach & Efficiency
-<!-- What approach did you take? Discuss Why. What is the Big O space/time for this approach? -->
-While approaching the challenge of building out tree structures, I knew that one of the main things I wanted to grasp was the difference between recursive and iterative approaches. As such you'll see that, for some methods, I have implemented both. The question of efficiency can get pretty foggy at my currently level of understanding, but let's just take the "contains" methods of the Binary Search Tree into consideration for now -
-
-### Iterative vs. Recursive - Searching a Binary Search Tree
-
-In terms of time efficiency, both methodologies are the same. That's good! The time efficiency of a properly constructed binary search will trend towards O(logn), depending on how well the tree is balanced.
-
-Searching a BST recursively means pushing functions onto a stack, and how this is handled depends on the language and the environment, but that's way out of scope of this problem. What's important is that this affects our *space* efficiency. Because we have to store the function calls in some way, and a function gets called for every step in the traversal, a recursive binary search (maybe, theoretically?) has a space efficiency of O(logn)... Again, depending on how well the tree is balanced. Also, depending on whether or not the compiler building your code is optimizing tail recursion away to an iterative method. Again, way beyond the scope of this. Still very interesting, nonetheless!
-
-Searching a BST iteratively though does not require additional function calls. All we have to define is a pointer to a node starting at the root of the tree and iterate through, changing the pointer as we go. This makes our space efficiency constant ( O(1) ), and our time efficiency is the same old O(logn).  
-
 ## Classes
 
 <dl>
@@ -25,6 +9,20 @@ Searching a BST iteratively though does not require additional function calls. A
 </dd>
 <dt><a href="#BinarySearchTree">BinarySearchTree</a></dt>
 <dd><p>Extends the <a href="#BinaryTree">BinaryTree</a> class with methods specific to Binary Search Trees.</p>
+</dd>
+<dt><a href="#Tree">Tree</a></dt>
+<dd><p>Defines an m-ary tree</p>
+</dd>
+</dl>
+
+## Functions
+
+<dl>
+<dt><a href="#fizzBuzz">fizzBuzz(input)</a> ⇒</dt>
+<dd><p>Performs the FizzBuzz algorithm on a single input.</p>
+</dd>
+<dt><a href="#callbackTree">callbackTree(tree, callback)</a> ⇒</dt>
+<dd><p>Traverses through an m-ary tree and creates a deep copy of each of its nodes. Creates a copy of the tree during traversal, altering each of the new nodes&#39; values with the provided callback function.</p>
 </dd>
 </dl>
 
@@ -48,6 +46,7 @@ Defines a binary tree data structure. It is aware of the root node, even when em
     * [.inorderRecursive()](#BinaryTree+inorderRecursive) ⇒
     * [.postorderRecursive()](#BinaryTree+postorderRecursive) ⇒
     * [.inorderIterative()](#BinaryTree+inorderIterative) ⇒
+    * [.findMax()](#BinaryTree+findMax) ⇒
 
 <a name="new_BinaryTree_new"></a>
 
@@ -102,6 +101,13 @@ Pushes each value to a holding array.
 
 **Kind**: instance method of [<code>BinaryTree</code>](#BinaryTree)  
 **Returns**: An array that holds the values in order of traversal.  
+<a name="BinaryTree+findMax"></a>
+
+### binaryTree.findMax() ⇒
+Using preorder traversal, finds the max value in a binary tree.
+
+**Kind**: instance method of [<code>BinaryTree</code>](#BinaryTree)  
+**Returns**: the maximum value present in the tree, or null if the tree is empty.  
 <a name="BinarySearchTree"></a>
 
 ## BinarySearchTree
@@ -194,18 +200,7 @@ Pushes each value to a holding array.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [node] | <code>Node</code> | <code>this.root</code> | The node to perform the check on. Defaults to the root of the tree. |
-
-## Functions
-
-<dl>
-<dt><a href="#fizzBuzz">fizzBuzz(input)</a> ⇒</dt>
-<dd><p>Performs the FizzBuzz algorithm on a single input.</p>
-</dd>
-<dt><a href="#callbackTree">callbackTree(tree, callback)</a> ⇒</dt>
-<dd><p>Traverses through an m-ary tree and creates a deep copy of each of its nodes. Creates a copy of the tree during traversal, altering each of the new nodes&#39; values with the provided callback function.</p>
-</dd>
-</dl>
+| [node] | [<code>Node</code>](#Node) | <code>this.root</code> | The node to perform the check on. Defaults to the root of the tree. |
 
 <a name="fizzBuzz"></a>
 
@@ -229,6 +224,6 @@ Traverses through an m-ary tree and creates a deep copy of each of its nodes. Cr
 
 | Param | Type | Description |
 | --- | --- | --- |
-| tree | <code>Tree</code> | An m-ary tree structure. The callback will be performed on each of its nodes. |
+| tree | [<code>Tree</code>](#Tree) | An m-ary tree structure. The callback will be performed on each of its nodes. |
 | callback | <code>function</code> | The callback function that should change the value of each of the nodes. |
 

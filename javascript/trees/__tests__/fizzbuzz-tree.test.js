@@ -1,5 +1,5 @@
 const { Tree } = require('../m-ary-tree');
-const { fizzBuzz, fizzBuzzTree } = require('../fizzbuzz-tree');
+const { fizzBuzz, callbackTree } = require('../fizzbuzz-tree');
 
 describe('Test the functionality of the fizzbuzz algorithm', () => {
   test('Numbers divisible by 3 (NOT 5) should output "fizz"', () => {
@@ -44,14 +44,14 @@ describe('Test the functionality of the fizzbuzz algorithm on an m-ary tree', ()
     tree.iterativeInsert(14);
     tree.iterativeInsert(15);
 
-    const fizzedTree = fizzBuzzTree(tree);
+    const fizzBuzzTree = callbackTree(tree, fizzBuzz);
 
     expect(tree.preorderRecursive()).toEqual([
       1, 2, 5, 14, 15, 6,
       7, 3, 8, 9, 10, 4,
       11, 12, 13
     ]);
-    expect(fizzedTree.preorderRecursive()).toEqual([
+    expect(fizzBuzzTree.preorderRecursive()).toEqual([
       '1', '2','Buzz', '14', 'FizzBuzz', 'Fizz',
       '7', 'Fizz', '8', 'Fizz', 'Buzz', '4',
       '11', 'Fizz', '13'
