@@ -26,6 +26,20 @@ Searching a BST iteratively though does not require additional function calls. A
 <dt><a href="#BinarySearchTree">BinarySearchTree</a></dt>
 <dd><p>Extends the <a href="#BinaryTree">BinaryTree</a> class with methods specific to Binary Search Trees.</p>
 </dd>
+<dt><a href="#Tree">Tree</a></dt>
+<dd><p>Defines an m-ary tree</p>
+</dd>
+</dl>
+
+## Functions
+
+<dl>
+<dt><a href="#fizzBuzz">fizzBuzz(input)</a> ⇒</dt>
+<dd><p>Performs the FizzBuzz algorithm on a single input.</p>
+</dd>
+<dt><a href="#callbackTree">callbackTree(tree, callback)</a> ⇒</dt>
+<dd><p>Traverses through an m-ary tree and creates a deep copy of each of its nodes. Creates a copy of the tree during traversal, altering each of the new nodes&#39; values with the provided callback function.</p>
+</dd>
 </dl>
 
 <a name="Node"></a>
@@ -48,6 +62,7 @@ Defines a binary tree data structure. It is aware of the root node, even when em
     * [.inorderRecursive()](#BinaryTree+inorderRecursive) ⇒
     * [.postorderRecursive()](#BinaryTree+postorderRecursive) ⇒
     * [.inorderIterative()](#BinaryTree+inorderIterative) ⇒
+    * [.findMax()](#BinaryTree+findMax) ⇒
 
 <a name="new_BinaryTree_new"></a>
 
@@ -102,6 +117,13 @@ Pushes each value to a holding array.
 
 **Kind**: instance method of [<code>BinaryTree</code>](#BinaryTree)  
 **Returns**: An array that holds the values in order of traversal.  
+<a name="BinaryTree+findMax"></a>
+
+### binaryTree.findMax() ⇒
+Using preorder traversal, finds the max value in a binary tree.
+
+**Kind**: instance method of [<code>BinaryTree</code>](#BinaryTree)  
+**Returns**: the maximum value present in the tree, or null if the tree is empty.  
 <a name="BinarySearchTree"></a>
 
 ## BinarySearchTree
@@ -194,18 +216,7 @@ Pushes each value to a holding array.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [node] | <code>Node</code> | <code>this.root</code> | The node to perform the check on. Defaults to the root of the tree. |
-
-## Functions
-
-<dl>
-<dt><a href="#fizzBuzz">fizzBuzz(input)</a> ⇒</dt>
-<dd><p>Performs the FizzBuzz algorithm on a single input.</p>
-</dd>
-<dt><a href="#callbackTree">callbackTree(tree, callback)</a> ⇒</dt>
-<dd><p>Traverses through an m-ary tree and creates a deep copy of each of its nodes. Creates a copy of the tree during traversal, altering each of the new nodes&#39; values with the provided callback function.</p>
-</dd>
-</dl>
+| [node] | [<code>Node</code>](#Node) | <code>this.root</code> | The node to perform the check on. Defaults to the root of the tree. |
 
 <a name="fizzBuzz"></a>
 
@@ -229,6 +240,6 @@ Traverses through an m-ary tree and creates a deep copy of each of its nodes. Cr
 
 | Param | Type | Description |
 | --- | --- | --- |
-| tree | <code>Tree</code> | An m-ary tree structure. The callback will be performed on each of its nodes. |
+| tree | [<code>Tree</code>](#Tree) | An m-ary tree structure. The callback will be performed on each of its nodes. |
 | callback | <code>function</code> | The callback function that should change the value of each of the nodes. |
 
