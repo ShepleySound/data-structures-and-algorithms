@@ -1,22 +1,4 @@
-const { Node, Tree } = require('m-ary-tree');
-
-const tree = new Tree(4);
-
-tree.iterativeInsert(1);
-tree.iterativeInsert(2);
-tree.iterativeInsert(3);
-tree.iterativeInsert(4);
-tree.iterativeInsert(5);
-tree.iterativeInsert(6);
-tree.iterativeInsert(7);
-tree.iterativeInsert(8);
-tree.iterativeInsert(9);
-tree.iterativeInsert(10);
-tree.iterativeInsert(11);
-tree.iterativeInsert(12);
-tree.iterativeInsert(13);
-tree.iterativeInsert(14);
-tree.iterativeInsert(15);
+const { Node, Tree } = require('./m-ary-tree');
 
 function fizzBuzz(input) {
   const value = parseInt(input);
@@ -45,7 +27,4 @@ function fizzBuzzTree(tree) {
   return newTree;
 }
 
-const newTree = fizzBuzzTree(tree);
-
-console.log(tree.preorderRecursive());
-console.log(newTree.preorderRecursive());
+module.exports = {fizzBuzz, fizzBuzzTree};
