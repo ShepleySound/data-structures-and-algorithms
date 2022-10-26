@@ -2,7 +2,7 @@
 
 ## What is a merge sort?
 
-In a merge sort, we split the container in half until we’ve broken it down into its smallest possible unit. In this case, our container is an array, and the smallest possible unit is an array with a single element. 
+In a merge sort, we split the container in half until we’ve broken it down into its smallest possible unit. In this case, our container is an array, and the smallest possible unit is an array with a single element.
 
 Afterwards, we begin the sequence of merging. We use conditionals to check the size of the elements in each side, and build the array back up in a sorted manner, piece by piece.
 
@@ -55,3 +55,5 @@ FUNCTION merge(left, right, arr)
 ```
 
 There's a lot going on here. Hopefully a visual will help to break down what's happening.
+
+![merge-process](images/merging-process.png)
