@@ -1,5 +1,3 @@
-const { merge } = require("cheerio/lib/static");
-
 function mergeSort(arr) {
   const n = arr.length;
 
@@ -7,10 +5,10 @@ function mergeSort(arr) {
     const mid = n / 2;
     const left = arr.slice(0, mid);
     const right = arr.slice(mid, n);
-
+    
     mergeSort(left);
     mergeSort(right);
-    merge(left, right, arr)
+    merge(left, right, arr);
   };
 }
 
@@ -21,16 +19,26 @@ function merge(left, right, arr) {
 
   while (i < left.length && j < right.length) {
     if (left[i] <= right[j]) {
-      arr[k] = left[i]
-      i++
+      arr[k] = left[i];
+      i++;
     } else {
       arr[k] = right[j];
-      j++
+      j++;
     }
+    k++;
+  }
+
+  while (i < left.length) {
+    arr[k] = left[i];
+    i++
     k++
   }
 
-  if (i === left.length) {
-    
+  while (j < right.length) {
+    arr[k] = right[j]
+    j++
+    k++
   }
 }
+
+module.exports = mergeSort;

@@ -48,10 +48,17 @@ FUNCTION merge(left, right, arr)
 
     k <-- k + 1
 
-  if i = left.length
-    set remaining entries in arr to remaining values in right
-  else
-    set remaining entries in arr to remaining values in left
+  *** Set the remaining values of arr to what is remaining in left, if anything ***
+  while i < left.length
+    arr[k] <-- left[i]
+    i <-- i + 1
+    k <-- k + 1
+
+  *** Set the remaining values of arr to what is remaining in right, if anything ***
+  while j < right.length
+    arr[k] <-- right[j]
+    j <-- j + 1
+    k <-- k + 1
 ```
 
 There's a lot going on here. Hopefully a visual will help to break down what's happening.
