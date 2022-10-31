@@ -25,7 +25,7 @@ class HashTable {
     const bucketArray = this.buckets[hashedKey];
     let includesKey = false;
     for (let i = 0; i < bucketArray.length; i++) {
-      if (bucketArray[i]) {
+      if (bucketArray[i][key]) {
         bucketArray[i][key] = value;
         includesKey = true;
       }
@@ -47,11 +47,11 @@ class HashTable {
     const hashedKey = this.hash(key);
     if (this.buckets[hashedKey]) {
       for (let item of this.buckets[hashedKey]) {
-        if (item) {
+        if (item[key]) {
           return item[key];
         }
       }
-    } else return null;
+    }
   }
 
   hash(key) {
@@ -101,28 +101,5 @@ class HashTable {
     return keys;
   }
 }
-
-const hashmap = new HashTable(100);
-
-// console.log(hashmap.hash('hello'));
-// console.log(hashmap.hash('tt'));
-// hashmap.set('hello', 'world');
-// hashmap.set('tt', 'different');
-// hashmap.set({hello: 'world'}, 'different');
-// hashmap.set('dt', 'different');
-// console.log(hashmap.get('dt'));
-hashmap.set('2', true);
-console.log(hashmap.get('2'));
-hashmap.set(2, false);
-console.log(hashmap.get('2'));
-hashmap.set(false, 12345);
-
-
-
-// console.log(hashmap.get('hello'));
-// console.log(hashmap.get('tt'));
-// console.log(hashmap.getHashedKeys());
-// console.log(hashmap.getSize())
-// console.log(hashmap.getRawKeys())
 
 module.exports = HashTable;
