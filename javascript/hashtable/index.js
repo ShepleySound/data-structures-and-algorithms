@@ -36,7 +36,6 @@ class HashTable {
       bucketArray.push(itemPair);
       this.size++;
     }
-
   }
 
   /**
@@ -61,7 +60,7 @@ class HashTable {
 
   /**
    * Returns true if the key hashes to a bucket that already contains items. Returns false if the bucket is empty.
-   * @param {*} key 
+   * @param {*} key
    * @returns {boolean}
    */
   bucketHasItems(key) {
@@ -79,7 +78,7 @@ class HashTable {
   }
 
   /**
-   * 
+   *
    * @returns An array of all bucket indexes that contain items.
    */
   getHashedKeys() {
