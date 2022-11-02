@@ -19,8 +19,24 @@ function treeToSet(tree) {
 /**
  *
  * @param {BinaryTree} tree
- * @param {HashTable} set
+ * @param {HashTable} hashSet
  */
-function checkTreeAgainstSet(tree, set) {}
+function checkTreeAgainstSet(tree, hashSet) {
+  const arr = [];
 
-module.exports = { treeToSet, checkTreeAgainstSet };
+  tree.inorderCallback((value) => {
+    if (hashSet.get(value)) {
+      arr.push(value);
+    }
+  });
+
+  return arr;
+}
+
+function treeIntersection(one, two) {
+  const hashSet = treeToSet(one);
+  const duplicateArray = checkTreeAgainstSet(two, hashSet);
+  return duplicateArray;
+}
+
+module.exports = { treeToSet, checkTreeAgainstSet, treeIntersection };
