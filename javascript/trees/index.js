@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-const {Stack, Queue} = require('../stack-and-queue/index');
+const { Stack, Queue } = require("../stack-and-queue/index");
 
 /**
  * Defines a node for a binary tree structure.
@@ -116,6 +116,51 @@ class BinaryTree {
   }
 
   /**
+   * Preorder traversal of the binary tree using a recursive function.
+   * Passes each value to the provided callback function during traversal.
+   * @param {function} callback - The callback function that tree values should be passed into.
+   * @param {Node} [node=this.root] - The node to perform the check on. Defaults to the root of the tree.
+   */
+  preorderCallback(callback, node = this.root) {
+    if (node === null) {
+      return;
+    }
+    callback(node.value);
+    this.preorderCallback(callback, node.left);
+    this.preorderCallback(callback, node.right);
+  }
+
+  /**
+   * Inorder traversal of the binary tree using a recursive function.
+   * Passes each value to the provided callback function during traversal.
+   * @param {function} callback - The callback function that tree values should be passed into.
+   * @param {Node} [node=this.root] - The node to perform the check on. Defaults to the root of the tree.
+   */
+  inorderCallback(callback, node = this.root) {
+    if (node === null) {
+      return;
+    }
+    this.inorderCallback(callback, node.left);
+    callback(node.value);
+    this.inorderCallback(callback, node.right);
+  }
+
+  /**
+   * Postorder traversal of the binary tree using a recursive function.
+   * Passes each value to the provided callback function during traversal.
+   * @param {function} callback - The callback function that tree values should be passed into.
+   * @param {Node} [node=this.root] - The node to perform the check on. Defaults to the root of the tree.
+   */
+  postorderCallback(callback, node = this.root) {
+    if (node === null) {
+      return;
+    }
+    this.postorderCallback(callback, node.left);
+    this.postorderCallback(callback, node.right);
+    callback(node.value);
+  }
+
+  /**
    * Inorder traversal of the binary tree using a stack and iterative function.
    * Pushes each value to a holding array.
    * @returns An array that holds the values in order of traversal.
@@ -142,13 +187,13 @@ class BinaryTree {
    * Using preorder traversal, finds the max value in a binary tree.
    * @returns the maximum value present in the tree, or null if the tree is empty.
    */
-  findMax(){
+  findMax() {
     let max = null;
     let traverse = (node) => {
       if (node === null) {
         return;
       }
-      if (node.value > max){
+      if (node.value > max) {
         max = node.value;
       }
       traverse(node.left);
@@ -157,7 +202,6 @@ class BinaryTree {
     traverse(this.root);
     return max;
   }
-
 }
 
 /**
@@ -252,17 +296,5 @@ class BinarySearchTree extends BinaryTree {
     }
   }
 }
-
-const searchTree = new BinaryTree();
-
-searchTree.iterativeInsert(4);
-searchTree.iterativeInsert(2);
-searchTree.iterativeInsert(6);
-searchTree.iterativeInsert(1);
-searchTree.iterativeInsert(3);
-searchTree.iterativeInsert(5);
-searchTree.iterativeInsert(7);
-
-console.log(searchTree.postorderRecursive());
 
 module.exports = { BinaryTree, BinarySearchTree, Node };
