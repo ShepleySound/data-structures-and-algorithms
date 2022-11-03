@@ -99,6 +99,20 @@ class HashTable {
     }
     return keys;
   }
+
+  /**
+   * Passes each unique key in the hash table to the provided callback function.
+   * @param {function} callback - A callback function that takes each key as a parameter
+   */
+  rawKeysCallback(callback) {
+    for (let bucket of this.buckets) {
+      if (bucket) {
+        for (let item of bucket) {
+          callback(...Object.keys(item));
+        }
+      }
+    }
+  }
 }
 
 module.exports = HashTable;
