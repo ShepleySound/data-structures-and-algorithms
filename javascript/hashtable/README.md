@@ -113,3 +113,4 @@ For example, the keys '1234' and 1234 will both return the same hash.
 Below is a list of challenges that I have solved using this particular implementation.
 
 [`Repeated Word`](./repeated-word.md)
+[`Left Join`]('./../hashtable-left-join.md)

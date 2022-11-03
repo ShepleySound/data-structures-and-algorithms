@@ -1,14 +1,15 @@
-"use strict";
-const { BinaryTree } = require("../../trees");
-const { HashTable } = require("../../hashtable");
+'use strict';
+
+const { BinaryTree } = require('../../trees');
+
 const {
   treeToSet,
   checkTreeAgainstSet,
   treeIntersection,
-} = require("../index");
+} = require('../index');
 
-describe("Test tree implementation", () => {
-  test("Add values to tree and test preorder callback method", () => {
+describe('Test tree implementation', () => {
+  test('Add values to tree and test preorder callback method', () => {
     const tree = new BinaryTree();
     tree.iterativeInsert(1);
     tree.iterativeInsert(500);
@@ -24,7 +25,7 @@ describe("Test tree implementation", () => {
   });
 });
 
-describe("Test tree intersection functions", () => {
+describe('Test tree intersection functions', () => {
   const treeOne = new BinaryTree();
   treeOne.iterativeInsert(1);
   treeOne.iterativeInsert(500);
@@ -41,7 +42,7 @@ describe("Test tree intersection functions", () => {
 
   const hashSet = treeToSet(treeOne);
 
-  test("Add the nodes of a tree to a hash set", () => {
+  test('Add the nodes of a tree to a hash set', () => {
     expect(hashSet.get(1)).toEqual(true);
     expect(hashSet.get(500)).toEqual(true);
     expect(hashSet.get(20)).toEqual(true);
@@ -51,12 +52,12 @@ describe("Test tree intersection functions", () => {
 
   const duplicateArray = checkTreeAgainstSet(treeTwo, hashSet);
 
-  test("Check the created hash set against the second tree's nodes", () => {
+  test('Check the created hash set against the nodes of a second tree', () => {
     expect(duplicateArray).toContain(20);
     expect(duplicateArray).toContain(500);
   });
 
-  test("Combine both functions to produce the desired solution", () => {
+  test('Combine both functions to produce the desired solution', () => {
     const duplicateArray = treeIntersection(treeOne, treeTwo);
     expect(duplicateArray).toContain(20);
     expect(duplicateArray).toContain(500);
