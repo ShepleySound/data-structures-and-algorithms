@@ -158,3 +158,5 @@ class Graph {
     return count;
   }
 }
+
+module.exports = { Edge, Graph };
