@@ -1,5 +1,8 @@
 'use strict';
 
+/**
+ * A class representing a node in a linked list.
+ */
 class Node {
   constructor(data, next) {
     this.data = data;
@@ -7,11 +10,21 @@ class Node {
   }
 }
 
+/**
+ * A class representing a singly linked list.
+ */
 class LinkedList {
+  /**
+   * Constructs a linked list with the head set to null.
+   */
   constructor() {
     this.head = null;
   }
 
+  /**
+   *
+   * @returns {Node} The final node in the linked list
+   */
   traverseToEnd() {
     if (this.head) {
       let current = this.head;
@@ -71,7 +84,7 @@ class LinkedList {
         // Creates a new node and sets the referenced node as its next property.
         const nextNode = searchedNode.next;
         const newNode = new Node(data, nextNode);
-        return searchedNode.next = newNode;
+        return (searchedNode.next = newNode);
       } else return null;
     }
   }
@@ -170,9 +183,9 @@ class LinkedList {
     while (current && counter < kIndex) {
       counter++;
       current = current.next;
-    } return current.data;
+    }
+    return current.data;
   }
 }
 
 module.exports = LinkedList;
-
