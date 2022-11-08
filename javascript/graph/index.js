@@ -93,6 +93,27 @@ class Graph {
   }
 
   /**
+   * Performs an iterative breadth-first traversal of the graph structure and passes each value to a provided callback function.
+   * The traversal will not visit the same vertex twice.
+   * @param {*} vertex - Vertex value to begin traversing from.
+   * @param {Function} callback - A callback function that takes the value of the vertex as an argument.
+   */
+  callbackBFS(vertex, callback) {
+    const queue = [vertex];
+    const visitedSet = new Set();
+    while (queue.length > 0) {
+      const current = queue.pop();
+      visitedSet.add(current);
+      callback(current);
+      for (let neighbor of this._vertices.get(current)) {
+        if (!visitedSet.has(neighbor.connectedVertex)) {
+          queue.unshift(neighbor.connectedVertex);
+        }
+      }
+    }
+  }
+
+  /**
    * Checks for the existence of a vertex value in the graph.
    * @param {*} vertex
    * @returns {boolean} True if the vertex exists in the graph. Returns false if the vertex does not exist.

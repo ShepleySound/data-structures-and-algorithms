@@ -54,10 +54,19 @@ describe('Test graph implementation', () => {
   });
 
   test('Return the neighbors of a vertex as an array of Edge objects', () => {
-    console.log(directedGraph.getNeighbors('a'));
     const neighborsOfA = directedGraph.getNeighbors('a');
     expect(neighborsOfA).toBeTruthy();
     expect(Array.isArray(neighborsOfA)).toEqual(true);
     expect(neighborsOfA[0]).toBeInstanceOf(Edge);
+  });
+
+  test('A breadth-first traversal can be performed with a callback function', () => {
+    undirectedGraph.addEdge('a', 'c');
+    undirectedGraph.addEdge('c', 'd');
+    undirectedGraph.addEdge('e', 'g');
+    undirectedGraph.addEdge('g', 'c');
+    const traversalResult = [];
+    undirectedGraph.callbackBFS('a', (vertex) => traversalResult.push(vertex));
+    expect(traversalResult).toEqual(['a', 'b', 'c', 'd', 'g', 'e']);
   });
 });
