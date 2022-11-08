@@ -1,11 +1,3 @@
-# Graph Implementation
-
-A JavaScript implementation of the [graph abstract data type](<https://en.wikipedia.org/wiki/Graph_(abstract_data_type)>). The implementation includes options for weighted/unweighted edges as well as defining a graph as either directed or undirected. Most methods have been thoroughly tested using Jest as a testing framework.
-
-## Documentation
-
-The following documentation was generated from in-code documentation using [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown).
-
 ## Classes
 
 <dl>
@@ -32,20 +24,19 @@ The class provides the option of creating either a fully directed or a fully und
 
 **Kind**: global class  
 
-
-  - [Graph](#graph)
-    - [new Graph([isDirected])](#new-graphisdirected)
-    - [graph.addVertex(value)](#graphaddvertexvalue)
-    - [graph.addEdge(vertexA, vertexB, weight)](#graphaddedgevertexa-vertexb-weight)
-    - [graph.printDFS(vertex, [visitedSet])](#graphprintdfsvertex-visitedset)
-    - [graph.callbackDFS(vertex, [visitedSet], [callback])](#graphcallbackdfsvertex-visitedset-callback)
-    - [graph.callbackBFS(vertex, callback)](#graphcallbackbfsvertex-callback)
-    - [graph.hasVertex(vertex) ⇒ <code>boolean</code>](#graphhasvertexvertex--boolean)
-    - [graph.getVertices() ⇒](#graphgetvertices-)
-    - [graph.getNeighbors(vertex) ⇒ <code>Array.&lt;Edge&gt;</code> \| <code>undefined</code>](#graphgetneighborsvertex--arrayedge--undefined)
-    - [graph.isAdjacent(vertexA, vertexB) ⇒ <code>boolean</code>](#graphisadjacentvertexa-vertexb--boolean)
-    - [graph.size() ⇒](#graphsize-)
-    - [graph.getComponentSize() ⇒](#graphgetcomponentsize-)
+* [Graph](#Graph)
+    * [new Graph([isDirected])](#new_Graph_new)
+    * [.addVertex(value)](#Graph+addVertex)
+    * [.addEdge(vertexA, vertexB, weight)](#Graph+addEdge)
+    * [.printDFS(vertex, [visitedSet])](#Graph+printDFS)
+    * [.callbackDFS(vertex, [visitedSet], [callback])](#Graph+callbackDFS)
+    * [.callbackBFS(vertex, callback)](#Graph+callbackBFS)
+    * [.hasVertex(vertex)](#Graph+hasVertex) ⇒ <code>boolean</code>
+    * [.getVertices()](#Graph+getVertices) ⇒
+    * [.getNeighbors(vertex)](#Graph+getNeighbors) ⇒ [<code>Array.&lt;Edge&gt;</code>](#Edge) \| <code>undefined</code>
+    * [.isAdjacent(vertexA, vertexB)](#Graph+isAdjacent) ⇒ <code>boolean</code>
+    * [.size()](#Graph+size) ⇒
+    * [.getComponentSize()](#Graph+getComponentSize) ⇒
 
 <a name="new_Graph_new"></a>
 
@@ -179,4 +170,3 @@ A component is defined as a set of vertices that share a connection, also known 
 
 **Kind**: instance method of [<code>Graph</code>](#Graph)  
 **Returns**: The number of components. In a fully connected graph, this number will be 1.  
-
