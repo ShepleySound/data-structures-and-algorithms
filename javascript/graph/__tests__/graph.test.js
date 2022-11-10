@@ -64,9 +64,44 @@ describe('Test graph implementation', () => {
     undirectedGraph.addEdge('a', 'c');
     undirectedGraph.addEdge('c', 'd');
     undirectedGraph.addEdge('e', 'g');
-    undirectedGraph.addEdge('g', 'c');
+    undirectedGraph.addEdge('f', 'g');
+    undirectedGraph.addEdge('h', 'g');
+    undirectedGraph.addEdge('a', 'h');
+    undirectedGraph.addEdge('a', 'i');
+    undirectedGraph.addEdge('i', 'k');
+
     const traversalResult = [];
     undirectedGraph.callbackBFS('a', (vertex) => traversalResult.push(vertex));
-    expect(traversalResult).toEqual(['a', 'b', 'c', 'd', 'g', 'e']);
+    expect(traversalResult).toEqual([
+      'a',
+      'b',
+      'c',
+      'h',
+      'i',
+      'd',
+      'g',
+      'k',
+      'e',
+      'f',
+    ]);
+  });
+
+  test('A depth-first traversal can be performed with a callback function', () => {
+    const traversalResult = [];
+    undirectedGraph.callbackDFS('a', new Set(), (vertex) =>
+      traversalResult.push(vertex)
+    );
+    expect(traversalResult).toEqual([
+      'a',
+      'b',
+      'c',
+      'd',
+      'h',
+      'g',
+      'e',
+      'f',
+      'i',
+      'k',
+    ]);
   });
 });
